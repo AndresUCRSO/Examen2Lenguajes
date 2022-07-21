@@ -1,1 +1,35 @@
-﻿<h1>Segundo Parcial</h1>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@model IEnumerable<Event>
+
+
+<br />
+<h2>Upcoming events</h2>
+
+<div class="container p-1">
+
+    <div class="row p-1">
+        @foreach (var obj in Model)
+        {
+            if (obj.Date >= DateTime.Now)
+            {
+                <div class="col-4 p-2">
+                    <div class="card p-2" style="width: 24rem">
+                        <img src="~/@obj.ImageUrl" class="card-img-top" alt="..." style="height:550px">
+                        <div class="card-body">
+                            <p class="card-title">@obj.Name</p>
+                            <p class="card-text">Date:  @obj.Date</p>
+                            <p class="card-text">Price:  ₡@obj.Price</p>
+                            <p class="card-text">Price:  @obj.AvailableSpaces</p>
+                            <a asp-controller="Home" asp-action="Detail" asp-route-id="@obj.Id" class="btn btn-outline-primary">Buy ticket</a>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            }
+        }
+    </div>
+</div>

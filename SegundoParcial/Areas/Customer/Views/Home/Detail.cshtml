@@ -1,0 +1,58 @@
+﻿@model Event
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="~/@Model.ImageUrl" alt="..." style="width:500px" /></div>
+            <div class="col-md-6">
+                <h2 class="display-5 fw-bolder">@Model.Name</h2>
+                
+                <div class="fs-5 mb-5">
+                    <p class="text-primary">Price: ₡@Model.Price</p>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" readonly />
+
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="AvailableSpaces"></label>
+                    <input asp-for="AvailableSpaces" class="form-control" readonly />
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label>Quantity</label>
+                    <input type="number" max="@Model.AvailableSpaces" class="form-control"/>
+                </div>
+
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">Confirm</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://cdn.tiny.cloud/1/15ppzj17t7o6klw3o2ryc501mp6jdbk1079w8wuxbsupg3u3/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      toolbar: false,
+      menubar: false,
+      statusbar: false,
+      readonly: true,
+    });
+</script>
+

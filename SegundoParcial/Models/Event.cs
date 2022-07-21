@@ -10,22 +10,30 @@ namespace SegundoParcial.Models
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Nombre del Evento:")]
+        [DisplayName("Name")]
         public string Name { get; set; }
+
         [Required]
-        [DisplayName("Fecha:")]
+        [DisplayName("Date")]
         public DateTime Date { get; set; }
+
         [Required]
-        [DisplayName("Descripcion:")]
+        [DisplayName("Description")]
         public string Description { get; set; }
+
         [ValidateNever]
+        [DisplayName("Image")]
         public string ImageUrl { get; set; }
+
         [Required]
-        [DisplayName("Capacidad:")]
+        [DisplayName("Max Assistance")]
         public int MaxAssistance { get; set; }
+
         [Required]
-        [DisplayName("Precio:")]
+        [DisplayName("Price")]
         public int Price { get; set; }
+
+        public int AvailableSpaces { get; set; }
 
     }
 }

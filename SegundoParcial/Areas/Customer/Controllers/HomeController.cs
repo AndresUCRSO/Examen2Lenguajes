@@ -19,11 +19,27 @@ namespace SegundoParcial.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Event> objEventList = _unitOfWork.Event.GetAll();
+            return View(objEventList);
         }
 
+        public IActionResult Detail(int? id)
+        {
 
-  
+            Event newEvent = new();
+
+
+            if (id == null || id <= 0)
+            {
+                return View(newEvent);
+            }
+            else
+            {
+                newEvent = _unitOfWork.Event.GetFirstOrDefault(u => u.Id == id);
+                return View(newEvent);
+            }
+
+        }
 
         public IActionResult Privacy()
         {

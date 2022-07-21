@@ -53,6 +53,7 @@
 
                 @if (Model.Id == 0)
                 {
+                    Model.AvailableSpaces = Model.MaxAssistance;
                     <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Save</button>
                 }
                 else
