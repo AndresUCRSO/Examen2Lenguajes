@@ -1,0 +1,104 @@
+﻿@model SegundoParcial.Models.Event
+
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+
+    <input asp-for="Id" hidden />
+    <input asp-for="ImageUrl" hidden />
+
+    <div class="row">
+        <div class="col-10">
+            <div class="border p-3 mt-4 row">
+                <div class="col-12 pb-2">
+                    <h2 class="text-primary">@(Model.Id==0?"Create":"Update") Event</h2>
+                    <hr />
+                </div>
+                <div asp-validation-summary="All"></div>
+                <div class="mb-3">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="Date"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="MaxAssistance"></label>
+                    <input asp-for="MaxAssistance" class="form-control" />
+                    <span asp-validation-for="MaxAssistance" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-6">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+
+                <div class="mb-3 col-6">
+                    <label asp-for="ImageUrl"></label>
+                    <input id="uploadBox" type="file" name="file" class="form-control" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                @if (Model.Id == 0)
+                {
+                    <button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Save</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                }
+
+
+                <a asp-controller="Event" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                    Back to list
+                </a>
+            </div>
+        </div>
+        <div class="col-2">
+            <img src="~/@Model.ImageUrl" width="100%"
+                 style="border-radius:5px; border=1px solid #bbb9b9" />
+        </div>
+    </div>
+
+
+</form>
+
+
+<script>
+    function ValidateInput()
+    {
+        if (document.getElementById("uploadBox").value == "")
+        {
+            Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload an image!'
+                      })
+        }
+    }
+</script>
+
+<script src="https://cdn.tiny.cloud/1/ioy075jqucrwdnkuwlpfe3umafudlbbkm7vt4gk36tc18b1b/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+</script>

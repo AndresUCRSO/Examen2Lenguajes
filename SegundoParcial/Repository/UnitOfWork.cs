@@ -8,9 +8,13 @@ namespace SegundoParcial.Repository
 
         private ApplicationDbContext _db;
 
+        public IEventRepository Event { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            Event = new EventRepository(_db);
+
         }
 
         public void Save()

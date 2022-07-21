@@ -22,7 +22,6 @@ namespace SegundoParcial.Repository
         }
 
 
-        //"Category,CoverType" 
         public IEnumerable<T> GetAll(string? includeProperties = null)
         {
            IQueryable<T> query = dbSet;

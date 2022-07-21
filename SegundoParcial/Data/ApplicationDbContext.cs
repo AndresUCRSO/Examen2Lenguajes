@@ -9,5 +9,8 @@ namespace SegundoParcial.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {    
         }
+
+        public DbSet<Event> Event { get; set; }
+
     }
 }
