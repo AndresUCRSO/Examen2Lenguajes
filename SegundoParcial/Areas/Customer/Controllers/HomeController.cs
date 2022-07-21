@@ -2,6 +2,8 @@
 using SegundoParcial.Models;
 using SegundoParcial.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using SegundoParcial.Utility;
 
 namespace SegundoParcial.Areas.Customer.Controllers
 {
@@ -23,6 +25,7 @@ namespace SegundoParcial.Areas.Customer.Controllers
             return View(objEventList);
         }
 
+        [Authorize(Roles = StaticValues.Role_User)]
         public IActionResult Detail(int? id)
         {
 

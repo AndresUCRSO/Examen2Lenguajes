@@ -1,4 +1,5 @@
-﻿@{
+﻿@using SegundoParcial.Utility
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -24,7 +25,10 @@
                             <p class="card-text">Date:  @obj.Date</p>
                             <p class="card-text">Price:  ₡@obj.Price</p>
                             <p class="card-text">Price:  @obj.AvailableSpaces</p>
-                            <a asp-controller="Home" asp-action="Detail" asp-route-id="@obj.Id" class="btn btn-outline-primary">Buy ticket</a>
+                            @if (User.IsInRole(StaticValues.Role_User))
+                            {
+                                <a asp-controller="Home" asp-action="Detail" asp-route-id="@obj.Id" class="btn btn-outline-primary">Buy ticket</a>
+                            }
                         </div>
                     </div>
                     <br />

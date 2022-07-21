@@ -24,7 +24,7 @@ namespace SegundoParcial.Repository
                 objFromDB.Description = obj.Description;
                 objFromDB.MaxAssistance = obj.MaxAssistance;
                 objFromDB.Price = obj.Price;
-                objFromDB.AvailableSpaces = objFromDB.AvailableSpaces;
+                objFromDB.AvailableSpaces = obj.AvailableSpaces;
 
                 if (obj.ImageUrl != null)
                 {

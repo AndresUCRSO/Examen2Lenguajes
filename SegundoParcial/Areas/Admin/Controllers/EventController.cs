@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SegundoParcial.Models;
 using SegundoParcial.Repository.IRepository;
+using SegundoParcial.Utility;
 
 namespace SegundoParcial.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = StaticValues.Role_Admin)]
     public class EventController : Controller
     {
 
@@ -76,6 +79,8 @@ namespace SegundoParcial.Areas.Admin.Controllers
 
                     obj.ImageUrl = @"images\events\" + fileName + extension;
                 }
+
+                obj.AvailableSpaces = obj.MaxAssistance;
 
                 if (obj.Id == 0)
                 {

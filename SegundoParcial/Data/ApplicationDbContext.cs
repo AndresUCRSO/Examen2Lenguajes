@@ -11,6 +11,7 @@ namespace SegundoParcial.Data
         }
 
         public DbSet<Event> Event { get; set; }
+        public DbSet<ApplicationUser> AppUser { get; set; }
 
     }
 }
